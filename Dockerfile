@@ -4,9 +4,8 @@ RUN apt-get -y update && apt-get -y install \
     php-mysql \
     php-mbstring \
     php-xml \
-    php-zip 
+    php-zip  
 
-RUN docker-php-ext-install pdo_mysql
 
 RUN sed -i 's_DocumentRoot /var/www/html_DocumentRoot /var/www/html/web/_' /etc/apache2/sites-enabled/000-default.conf
 
