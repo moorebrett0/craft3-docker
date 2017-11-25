@@ -1,7 +1,12 @@
 FROM nimmis/apache-php7
 
-RUN apt-get -y update && apt-get -y install php-mysql
-RUN apt-get -y install php-mbstring && apt-get -y install php-xml && apt-get -y install php-zip
+RUN apt-get -y update && apt-get -y install \
+    php-mysql \
+    php-mbstring \
+    php-xml \
+    php-zip 
+
+RUN docker-php-ext-install pdo_mysql
 
 RUN sed -i 's_DocumentRoot /var/www/html_DocumentRoot /var/www/html/web/_' /etc/apache2/sites-enabled/000-default.conf
 
