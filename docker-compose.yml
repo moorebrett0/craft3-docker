@@ -1,0 +1,19 @@
+web:
+  build: .
+  volumes:
+  - .:/var/www/html/:rw
+  links:
+  - db
+  environment:
+  - VIRTUAL_HOST=localhost
+db:
+  image: mysql:5.7
+  environment:
+  - MYSQL_USER=docker
+  - MYSQL_PASSWORD=docker
+  - MYSQL_DATABASE=docker
+  - MYSQL_ROOT_PASSWORD=rootpass
+  ports:
+  - 3307:3306
+  volumes:
+  - ./Docker/mysql:/docker-entrypoint-initdb.d
